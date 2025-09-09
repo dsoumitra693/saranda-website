@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+:root {
+  /* Original colors */
+  --background: #ffffff;
+  --foreground: #171717;
+  
+  /* Palette 1 - Green/Lime Theme */
+  --primary-dark: #012619;
+  --primary-deep: #000d08;
+  --primary-lime: #a9bf5a;
+  --primary-light-lime: #e4f277;
+  --primary-light-gray: #f2f2f2;
+  
+  /* Palette 2 - Earth Tones */
+  --secondary-forest: #244038;
+  --secondary-sage: #638c46;
+  --secondary-olive: #9aa680;
+  --secondary-beige: #d9d2b0;
+  --secondary-cream: #f2ecd8;
+  
+  /* Semantic color assignments */
+  --bg-primary: var(--primary-light-gray);
+  --bg-secondary: var(--secondary-cream);
+  --bg-accent: var(--primary-lime);
+  
+  --text-primary: var(--primary-dark);
+  --text-secondary: var(--secondary-forest);
+  --text-accent: var(--secondary-sage);
+  
+  --border-primary: var(--primary-deep);
+  --border-secondary: var(--secondary-olive);
+  --border-light: var(--primary-light-lime);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  
+  /* Custom palette colors */
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-accent: var(--bg-accent);
+  
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-accent: var(--text-accent);
+  
+  --color-border-primary: var(--border-primary);
+  --color-border-secondary: var(--border-secondary);
+  --color-border-light: var(--border-light);
+  
+  /* Individual palette colors */
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-deep: var(--primary-deep);
+  --color-primary-lime: var(--primary-lime);
+  --color-primary-light-lime: var(--primary-light-lime);
+  --color-primary-light-gray: var(--primary-light-gray);
+  
+  --color-secondary-forest: var(--secondary-forest);
+  --color-secondary-sage: var(--secondary-sage);
+  --color-secondary-olive: var(--secondary-olive);
+  --color-secondary-beige: var(--secondary-beige);
+  --color-secondary-cream: var(--secondary-cream);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    
+    /* Dark mode palette adjustments */
+    --bg-primary: var(--primary-dark);
+    --bg-secondary: var(--secondary-forest);
+    --bg-accent: var(--secondary-sage);
+    
+    --text-primary: var(--primary-light-gray);
+    --text-secondary: var(--secondary-cream);
+    --text-accent: var(--primary-light-lime);
+    
+    --border-primary: var(--primary-lime);
+    --border-secondary: var(--secondary-olive);
+    --border-light: var(--secondary-beige);
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
