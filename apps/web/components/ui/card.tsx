@@ -1,116 +1,80 @@
-"use client";
-
 import { cn } from "../../utils";
 import Image from "next/image";
+import { Button } from "./button";
 
-interface ServiceCardProps {
+interface CardProps {
     title: string;
     subtitle?: string;
-    iconPath: string; 
-    variant?: "lime" | "dark" | "light" | "gradient";
+    image?: string;
+    category?: string;
+    date?: string;
+    buttonText?: string;
     className?: string;
     onClick?: () => void;
 }
 
-export const ServiceCard = ({
+export default function Card({
     title,
     subtitle,
-    iconPath,
-    variant = "lime",
+    image,
+    category,
+    date,
+    buttonText,
     className,
     onClick
-}: ServiceCardProps) => {
-    const baseStyles = "relative overflow-hidden rounded-3xl p-6 cursor-pointer transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] w-[37.5rem] flex justify-between items-center border border-[#191A23] shadow-[0_5px_0_0_#191A23]";
-
-    const variants = {
-        "lime": "bg-primary-lime text-primary-dark",
-        "dark": "bg-[#191A23] text-primary-light-lime",
-        "light": "bg-background-primary text-text-primary border-2 border-border-light",
-        "gradient": "bg-gradient-to-br from-primary-lime to-secondary-sage text-primary-dark"
-    };
-
-    const titleStyles = {
-        "lime": "bg-white text-primary-dark",
-        "dark": "bg-white text-primary-dark",
-        "light": "bg-primary-lime text-primary-dark",
-        "gradient": "bg-white text-primary-dark"
-    };
-
-    const buttonStyles = {
-        "lime": "bg-primary-dark text-primary-light-lime hover:bg-primary-deep",
-        "dark": "bg-primary-lime text-primary-dark hover:bg-primary-light-lime",
-        "light": "bg-primary-dark text-primary-light-lime hover:bg-primary-deep",
-        "gradient": "bg-primary-dark text-primary-light-lime hover:bg-primary-deep"
-    };
-
-    const iconStyles = {
-        "lime": "bg-primary-lime text-primary-dark",
-        "dark": "bg-primary-lime text-primary-dark",
-        "light": "bg-primary-lime text-primary-dark",
-        "gradient": "bg-primary-lime text-primary-dark"
-    };
-
+}: CardProps) {
     return (
-        <div
-            className={cn(baseStyles, variants[variant], className)}
+        <div 
+            className={cn(
+                "w-96 h-[28rem] rounded-2xl p-6 flex flex-col overflow-hidden cursor-pointer transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] bg-secondary-forest text-white shadow-lg",
+                className
+            )} 
             onClick={onClick}
         >
-            {/* Left Content Section */}
-            <div className="flex flex-col gap-4">
-                {/* Title Section */}
-                <div className="flex flex-col">
-                    <div className={cn(
-                        "px-4 py-2 rounded-lg font-bold text-lg inline-block w-fit",
-                        titleStyles[variant]
-                    )}>
-                        {title}
+            {/* Image Section */}
+            {image && (
+                <div className="w-full h-48 bg-black flex items-center justify-center p-8">
+                    <Image
+                        src={image}
+                        alt={title}
+                        width={300}
+                        height={150}
+                        className="object-contain max-w-full max-h-full"
+                    />
+                </div>
+            )}
+            
+            {/* Content Section */}
+            <div className="flex-1 flex flex-col justify-between mt-3">
+                <div>
+                    {/* Category */}
+                    <div className="text-primary-lime text-sm font-semibold tracking-wider mb-2 uppercase">
+                        {category}
                     </div>
+                   
+                    {/* Title */}
+                    <h2 className="text-white text-lg font-bold leading-tight">
+                        {title}
+                    </h2>
+                    
+                    {/* Subtitle */}
                     {subtitle && (
-                        <div className={cn(
-                            "px-4 py-2 rounded-lg font-bold text-lg inline-block w-fit",
-                            titleStyles[variant]
-                        )}>
+                        <p className="text-gray-300 text-sm leading-relaxed mb-6">
                             {subtitle}
-                        </div>
+                        </p>
                     )}
                 </div>
-
-                {/* Learn More Button */}
-                <div className="mt-2">
-                    <button className={cn(
-                        "flex items-center gap-3 px-4 py-3 rounded-full transition-all duration-200 font-medium",
-                        buttonStyles[variant]
-                    )}>
-                        <div className={cn(
-                            "w-8 h-8 rounded-full flex items-center justify-center",
-                            iconStyles[variant]
-                        )}>
-                            <ArrowIcon />
-                        </div>
-                        <span>Learn more</span>
-                    </button>
-                </div>
-            </div>
-
-            {/* Right Icon Section */}
-            <div className="flex items-center justify-center">
-                <div className="w-32 h-32 flex items-center justify-center opacity-90">
-                    <Image
-                        src={iconPath}
-                        alt={`${title} icon`}
-                        width={128}
-                        height={128}
-                        className="object-contain"
-                    />
+                
+                {/* Bottom Section with Button and Date */}
+                <div className="flex items-center justify-between">
+                    <Button variant="secondary" size="sm" className="border border-secondary-cream/15 bg-secondary-cream/10 hover:bg-secondary-cream/30 hover:border-secondary-cream uppercase">
+                        {buttonText}
+                    </Button>
+                    <span className="text-gray-400 text-sm">
+                        {date}
+                    </span>
                 </div>
             </div>
         </div>
     );
-};
-
-// Arrow Icon Component
-const ArrowIcon = () => (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="stroke-current">
-        <path d="M7 17L17 7M17 7H7M17 7V17" />
-    </svg>
-);
+}
