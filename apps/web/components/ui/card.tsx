@@ -26,7 +26,10 @@ export default function Card({
     return (
         <div 
             className={cn(
-                "w-96 h-[28rem] rounded-2xl p-6 flex flex-col overflow-hidden cursor-pointer transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] bg-secondary-forest text-white shadow-lg",
+                "w-full max-w-sm mx-auto h-auto min-h-[24rem] rounded-2xl p-6 pb-8 flex flex-col overflow-hidden cursor-pointer transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] bg-secondary-forest text-white shadow-lg",
+                "sm:max-w-md sm:h-[26rem] sm:pt-5 sm:px-5 sm:pb-10",
+                "md:w-96 md:h-[28rem] md:pt-6 md:px-6 md:pb-12 md:max-w-none md:mx-0",
+                "lg:pb-16",
                 className
             )} 
             onClick={onClick}
