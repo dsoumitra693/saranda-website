@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  font-family: monospace !important;
+}
+
 :root {
   /* Original colors */
   --background: #ffffff;

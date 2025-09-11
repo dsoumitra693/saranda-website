@@ -1,8 +1,8 @@
 import Card from "../../components/ui/card";
 
-export default function MarketingCards() {
+export default function Page() {
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 h-screen w-screen gap-6 p-6 bg-primary-dark">
+        <div className="grid grid-cols-1 md:grid-cols-2 h-[100%] w-[100%] gap-6 p-6 bg-primary-light-gray">
             <Card
                 title="Pay-per-click advertising"
                 subtitle="Welinq and QphoX Partner to Create Seamless Connections Between Superconducting Quantum Processors for Scalable Computing"
